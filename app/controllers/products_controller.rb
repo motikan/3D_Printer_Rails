@@ -38,8 +38,10 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-	puts `ruby #{Rails.root}/ochoko.rb #{@product.photo.path} > #{Rails.root}/public/stl_files/#{@product.id}.stl`
-	format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
+          f.write Ochoko.create @product.photo.path
+        end
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
