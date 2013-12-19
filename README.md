@@ -1,4 +1,4 @@
-$ls g scaffold product title:string
+$rails g scaffold product title:string
 
 $ rake db:migrate
 

@@ -1,6 +1,6 @@
 Site::Application.routes.draw do
   resources :products
-  root :to => 'products#show'
+  root :to => 'products#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
