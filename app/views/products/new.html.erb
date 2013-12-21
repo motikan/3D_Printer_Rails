@@ -1,5 +1,69 @@
-<h1>New product</h1>
+﻿<div class="container">
 
-<%= render 'form' %>
+      <div class="masthead">
+        <h3 class="muted">Project name</h3>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li><a href="./">Home</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Downloads</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+      </div>
 
-<%= link_to 'Back', products_path %>
+      <!-- Jumbotron -->
+      <div class="jumbotron_">
+      <div class="row">
+        <div class="span8" style="background-color:#fbfbfb; height:200px">
+        説明
+        </div>
+        
+        <div class="span4">
+          <%= form_for @product, :html => { :multipart => true } do |f| %>
+            <% if @product.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+                <ul>
+                  <% @product.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <p><%= f.label :title %><%= f.text_field :title %></p>
+            
+            <input id="product_photo" name="product[photo]" type="file" style="display:none">
+            <font id="photoCover" size="4">ファイルを選択してください</font>
+            <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">File Select</a>
+            
+              <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                create</i>
+              <% end %>
+          <% end %>
+        </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>
+
+    </div>
+    
+</div>
+    
+<script type="text/javascript">
+  $('input[id=product_photo]').change(function () {
+    $('#photoCover').text($(this).val());
+  });
+</script>
