@@ -1,28 +1,3 @@
-<h1>Listing products</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.title %></td>
-    <td><%= image_tag product.photo.url %></td> 
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Product', new_product_path %>
-
 <div class="container">
 
       <div class="masthead">
@@ -46,25 +21,30 @@
       <!-- Jumbotron -->
       <div class="jumbotron">
         <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="<%= new_product_path %>" >New Product</a>
+        <p class="lead"></p>
+        <%= link_to 'New Product', new_product_path,  :class => 'btn btn-large btn-success' %>
       </div>
 
       <hr>
 
       <!-- Example row of columns -->
-      <div class="row-fluid">
-        <div class="span6">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span6">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-      </div>
+      <% @products.each_with_index do |product, i| %>
+        <% if i%2 == 0 %>
+          <div class="row-fluid">
+        <% end %>
+            <div class="span6">
+              <h2><%= product.title %></h2>
+              <p><%= image_tag product.photo.url %></p>
+              <p>
+                <%= link_to 'Show', product, :class => 'btn' %>
+                <%= link_to 'Edit', edit_product_path(product), :class => 'btn' %>
+                <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
+              </p>
+            </div>
+        <% if i%2==1 || i+1 ==  @products.length %>
+          </div>
+        <% end %>
+      <% end %>
 
       <hr>
 
