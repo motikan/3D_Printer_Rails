@@ -77,3 +77,8 @@ padding: 0;
 	border-right: 0;
 	border-radius: 0 3px 3px 0;
 }
+
+#show_img{
+  max-width: 250px;
+  max-height: 200px;
+}
