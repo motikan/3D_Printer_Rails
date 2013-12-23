@@ -6170,3 +6170,13 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+#mdlClr,
+#bckClr1,
+#bckClr2 {
+  width: 40px;
+}
+
+#defini {
+  width: 100px;
+}
