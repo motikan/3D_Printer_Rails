@@ -5,7 +5,7 @@ class Ochoko
 
   BASE_HEIGHT = 0.3
   CUP_HEIGHT = 1.5
-  THICKNESS = 0.1
+  THICKNESS = 0.15
   W, H = 200, 200
 
   def self.create imgfile
