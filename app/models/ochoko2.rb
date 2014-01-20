@@ -1,7 +1,7 @@
 require_relative 'stl/stl'
 require_relative  'stl/util2d'
 
-class Ochoko
+class Ochoko2
 
   BASE_HEIGHT = 0.3
   CUP_HEIGHT = 1.5
@@ -35,7 +35,7 @@ class Ochoko
           r2, z2 = line.call 1-t
           r2 -= THICKNESS
         end
-        rnd = 1+0.04*rand2d.get(t1, z2)
+        rnd = 1+0.01*rand2d.get(t1, z2)
         {
           x: 20*rnd*r2*Math.cos(th),
           y: 20*rnd*r2*Math.sin(th),

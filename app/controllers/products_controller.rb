@@ -39,7 +39,11 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
-          f.write Ochoko.create @product.photo.path
+         if params[:model][:type] == 'ochoko'
+	   f.write Ochoko.create @product.photo.path
+         elsif params[:model][:type] == 'tokuri'
+	    f.write Ochoko2.create @product.photo.path
+	 end
         end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
