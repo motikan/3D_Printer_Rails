@@ -1,6 +1,7 @@
 ﻿body {
 	padding-top: 20px;
 	padding-bottom: 60px;
+	background-image: url("body_back.png");
 }
 
 /* Custom container */

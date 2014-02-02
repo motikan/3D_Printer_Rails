@@ -15,7 +15,7 @@
 
   </div>
 
-  <div class="span6">
+  <div class="span6" style="background-color: #fff;">
     <%= form_for @product, :url => {:action => 'democreate'} , :html => { :multipart => true } do |f| %>
     <%= f.text_field :title, value: 'DemoFile', style: "display:none" %>
     <%= image_tag 'droid.png' %>

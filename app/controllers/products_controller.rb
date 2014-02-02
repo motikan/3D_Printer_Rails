@@ -81,7 +81,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
-            f.write Ochoko2.create "#{Rails.root.to_s}/public/photos/original/missing.png"
+            f.write Ochoko.create "#{Rails.root.to_s}/public/photos/original/missing.png"
         end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
@@ -99,11 +99,11 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update_attributes(params[:product])
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
-          #if params[:model][:type] == 'ochoko'
+          if params[:model][:type] == 'ochoko'
             f.write Ochoko.create @product.photo.path
-          #else params[:model][:type] == 'tokuri'
-            #f.write Ochoko2.create @product.photo.path
-          #end
+          elsif params[:model][:type] == 'tokuri'
+            f.write Tokkuri.create @product.photo.path
+          end
         end
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
