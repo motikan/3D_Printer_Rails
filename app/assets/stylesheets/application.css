@@ -11,3 +11,43 @@
  *= require_self
  *= require_tree .
  */
+#top{
+	margin-top: 10px;
+	height: 300px;
+	background-image: url("image.png");
+	border-radius: 5px;
+	background-repeat: no-repeat;
+}
+
+.item_box{
+	height: 250px;
+	border-radius: 15px;
+	border: 1px solid #d4d4d4;
+	background-image: url("item_box_img.png");
+	background-repeat: no-repeat;
+	box-shadow: 5px 5px 5px #C9F;/* 右に5px、下に5px */
+	-webkit-box-shadow: 5px 5px 5px #d0d0d0;
+	-moz-box-shadow: 5px 5px 5px #C9F;
+}
+
+.item_box_img{
+	height: 150px;
+	border-radius: 15px 15px 0 0;
+}
+
+.item_box img{
+	margin-top: 10px;
+	max-height: 130px;
+	max-width: 400px;
+	vertical-align: middle;
+}
+
+.item_box_child{
+	position: relative;
+	left: 10px;
+	height: 48px;
+	width: 380px;
+	padding-left: 50px;
+	background-image: url("item_box_title.png");
+	background-repeat: no-repeat;
+}

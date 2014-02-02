@@ -1,52 +1,50 @@
-<div class="container">
+<div id="top" class="row-fluid">
+  <div class="jumbotron span3">
+  	<p class="lead"><br></p>
+    <%= link_to 'New Create', new_product_path,  :class => 'btn btn-large btn-success' %>
+  </div>
+  <div class="jumbotron span9">
+    
+  </div>
+</div>
 
-      <div class="masthead">
-        <h3 class="muted">Once-Tech</h3>
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Downloads</a></li>
-              </ul>
-            </div>
-          </div>
-        </div><!-- /.navbar -->
+<hr>
+
+<div class="row-fluid">
+  <div class="span3">
+
+  </div>
+
+  <div class="span6">
+    <%= form_for @product, :url => {:action => 'democreate'} , :html => { :multipart => true } do |f| %>
+    <%= f.text_field :title, value: 'DemoFile', style: "display:none" %>
+    <%= image_tag 'droid.png' %>
+    <%= button_tag(type: "submit", class: "btn btn-info btn-large") do %>create<% end %>
+    <% end %>
+  </div>
+
+  <div class="span3">
+
+  </div>
+
+</div>
+
+<hr>
+
+<% @products.each_with_index do |product, i| %>
+  <% if i%2 == 0 %>
+    <div class="row-fluid">
+  <% end %>
+    <div class="span6 item_box">
+      <div class="item_box_img">
+        <center><%= image_tag product.photo.url %></center>
       </div>
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <p class="lead"></p>
-        <%= link_to 'New Create', new_product_path,  :class => 'btn btn-large btn-success' %>
-      </div>
-
-      <hr>
-
-      <!-- Example row of columns -->
-      <% @products.each_with_index do |product, i| %>
-        <% if i%2 == 0 %>
-          <div class="row-fluid">
-        <% end %>
-            <div class="span6">
-              <h2><%= product.title %></h2>
-              <p><%= image_tag product.photo.url %></p>
-              <p>
-                <%= link_to 'Show', product, :class => 'btn' %>
-                <%= link_to 'Edit', edit_product_path(product), :class => 'btn' %>
-                <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %>
-              </p>
-            </div>
-        <% if i%2==1 || i+1 ==  @products.length %>
-          </div>
-        <% end %>
-      <% end %>
-
-      <hr>
-
-      <div class="footer">
-        <p>&copy; Company 2013</p>
-      </div>
-
+    <div class="item_box_child">
+      <h2><%= product.title %></h2>
+      <%= link_to 'Show', product, :class => 'btn btn-primary', :style=>'color:#ffffff; width: 100px; float:right;' %>
     </div>
+    </div>
+    <% if i%2==1 || i+1 ==  @products.length %>
+    </div>
+    <% end %>
+<% end %>

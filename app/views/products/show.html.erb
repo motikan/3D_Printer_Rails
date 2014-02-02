@@ -1,24 +1,7 @@
-﻿<div class="container">
-  
-  <div class="masthead"> 
-    <h3 class="muted">Once-Tech</h3>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <ul class="nav">
-            <li><a href="./">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Downloads</a></li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- /.navbar -->
-  </div>
-  <div class="row">
-    <div class="span8" style="background-color:#f4f4f4; position:relative; font-size: 9pt; color: #777777;">
+﻿<div class="row-fluid">
+    <div class="span8" style="position:relative;">
       <canvas id="cv" style="padding:0" width="620" height="600" ></canvas>
-      <div id="tip" style="display:block; color:#000000; padding:2px; position:absolute; left:10px; bottom:20px; background-color:#c0c0c0; height:50px; border-radius:5px; border:1px solid #000000; font-family:Arial,sans-serif; opacity:0.5;"> 
+      <div id="tip" style="display:block; color:#ffffff; padding:2px; position:absolute; left:10px; bottom:20px; background-color:#606060; height:40px; border-radius:5px; opacity:1;"> 
         Drag mouse to rotate <br> Drag mouse with shift pressed to zoom
       </div>
     </div>
@@ -27,9 +10,10 @@
       <center><h4><%= @product.title %></h4></center>
       <center><%= image_tag @product.photo.url, id: "show_img", style: "margin:10px" %></center>
       
-      <center><%= link_to "Model Download", "/stl_files/"+(@product.id).to_s+".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.title+".stl" %></center><br>
-      <div style="margin-left:10px; margin-top:50px;">
-        Model Color:<input id="mdlClr" style="margin-right: 50px;" type="color" value="#00ff00" onchange="changeOption('ModelColor',this.value)"></input><br>
+      <center><%= link_to "Model Download", "/stl_files/"+(@product.id).to_s+".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s+".stl" %></center><br>
+      <div>
+        Model Color:<input id="mdlClr" style="margin-right: 50px;" type="color" value="#00ff00" onchange="changeOption('ModelColor',this.value)"></input>
+        <br>
         Back Color1:<input id="bckClr1" style="margin-right: 50px;" type="color" onchange="changeOption('BackgroundColor1',this.value)"></input><br>
         Back Color2:<input id="bckClr2" type="color" onchange="changeOption('BackgroundColor2',this.value)"></input><br />
         Definition:
@@ -39,15 +23,11 @@
           <option>high</option>
       </select>
       </div>
+      <%= link_to 'ReCREATE', @product.id.to_s+'/edit', :class => 'btn btn-warning', :style=>'color:#ffffff;' %>
+      <%= link_to 'DELETE', @product.id.to_s , method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger', :style=>'color:#ffffff;' %>
     </div>
   </div>
     This web application do not support the InternetExplorer.
-
-      <hr>
-
-      <div class="footer"><p>&copy; Company 2013</p></div>
-
-</div>
 
 <script type="text/javascript">
     var viewer3d;

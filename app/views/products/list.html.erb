@@ -1,0 +1,17 @@
+<% @products.each_with_index do |product, i| %>
+    <% if i%2 == 0 %>
+      <div class="row-fluid">
+    <% end %>
+    <div class="span6 item_box">
+      <div class="item_box_img">
+        <center><%= image_tag product.photo.url %></center>
+      </div>
+      <div class="item_box_child">
+        <h2><%= product.title %></h2>
+        <%= link_to 'Show', product, :class => 'btn btn-primary', :style=>'color:#ffffff; width: 100px; float:right;' %>
+      </div>
+    </div>
+    <% if i%2==1 || i+1 ==  @products.length %>
+      </div>
+    <% end %>
+  <% end %>

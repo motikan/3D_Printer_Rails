@@ -1,69 +1,62 @@
-﻿<div class="container">
-
-      <div class="masthead">
-        <h3 class="muted">Project name</h3>
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                <li><a href="./">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Downloads</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </div><!-- /.navbar -->
-      </div>
-
-      <!-- Jumbotron -->
-      <div class="jumbotron_">
-      <div class="row">
-        <div class="span8" style="background-color:#fbfbfb; height:200px">
-          PNG only.
-        </div>
-        
-        <div class="span4">
-          <%= form_for @product, :html => { :multipart => true } do |f| %>
-            <% if @product.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-                <ul>
-                  <% @product.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-            
-            <p><%= f.label :title %><%= f.text_field :title %></p>
-            
-            <input id="product_photo" name="product[photo]" type="file" style="display:none">
-            <font id="photoCover" size="4">ファイルを選択してください</font>
-
-            <%= select_tag 'model[type]', options_for_select({"おちょこ" => "ochoko", "とっくり" => "tokuri"}) %>          
-
-            <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">File Select</a>
-            
-              <%= button_tag(type: "submit", class: "btn btn-default") do %>
-                create</i>
-              <% end %>
-          <% end %>
-        </div>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="footer">
-        <p>&copy; Company 2013</p>
-      </div>
-
+﻿<div class="row" style="background-color:#fbfbfb;">
+    <div class="span4" style="background-color:#fbfbfb;">
+      <h3><font color="#0000ff">Good Image</font></h3>
+      <%= image_tag 'droid.png', :style => "width:300px;" %>
+      <table style="width:300px;">
+        <tr><td><h4>widht : height</h4></td><td><h3><font color="#00f">5 : 1</font></h3></td></tr>
+        <tr><td><h4>File Extension</h4></td><td><h3><font color="#00f">.png</font></h3></td></tr>
+      </table>
     </div>
-    
-</div>
+    <div class="span4" style="background-color:#fbfbfb;">
+     <%= image_tag 'good_result.png', :style => "width:300px;" %>
+    </div>    
+    <div class="span4">
+    <%= form_for @product, :html => { :multipart => true } do |f| %>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+              <% @product.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <p><%= f.label :title %><%= f.text_field :title %></p>
+    <input id="product_photo" name="product[photo]" type="file" style="display:none">
+    <%= select_tag 'model[type]', options_for_select({"Cup" => "ochoko", "Pot" => "tokuri"}) %><br>
+    <font id="photoCover" size="4">Select Image file</font>         
+    <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">Image Select</a>
+    <%= button_tag(type: "submit", class: "btn btn-default ladda-button") do %>create<% end %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 10px; background-color:#fbfbfb;">
+    <div class="span4">
+      <h3><font color="#ff0000">Bad Image</font></h3>
+      <%= image_tag 'droid.png' %>
+      <table style="width:300px;">
+        <tr><td><h4>File Extension</h4></td><td><h3><font color="#f00">Not .png</h3></font></td></tr>
+      </table>
+    </div>
+     <div class="span4" style="background-color:#fbfbfb;">
+      <%= image_tag 'bad_result.png', :style => "width:300px;" %>
+    </div>
+
+  </div>
+  <div class="row" style="margin-top: 10px">
+    <div class="span4" style="background-color:#fbfbfb; height:200px">
+      <h3><font color="#ffa500">Not Good Image</font> </h3>
+      <%= image_tag 'bad.png' %>
+      <table style="width:300px;">
+        <tr><td><h4>widht : height</h4></td><td><h3><font color="#ffa500">Not 5 : 1</font></h3></td></tr>
+      </table>
+    </div>
+    <div class="span4" style="background-color:#fbfbfb;">
+      <%= image_tag 'nogood_result.png', :style => "width:300px;" %>
+    </div>
+  </div>
     
 <script type="text/javascript">
   $('input[id=product_photo]').change(function () {

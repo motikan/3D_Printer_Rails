@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Site</title>
+  <title>Once-Tech</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
+<%= render 'header' %>
 <%= yield %>
+<hr>
+<div class="footer">
+	<p>&copy; Company 2013</p>
+</div>
 
+</div>
 </body>
 </html>
