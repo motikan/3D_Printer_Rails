@@ -54,3 +54,17 @@
 	background-image: url("item_box_title.png");
 	background-repeat: no-repeat;
 }
+
+.help_img{
+	padding: 5px;
+	border: 1px solid #d4d4d4;
+	border-radius: 15px;
+	background-color:#fbfbfb;
+}
+
+.help_script{
+	padding: 5px;
+	border: 1px solid #d4d4d4;
+	border-radius: 15px;
+	background-color:#fbfbfb;
+}
