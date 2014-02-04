@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
             f.write Tokkuri.create @product.photo.path
           end
         end
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to Product.find(107), notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
