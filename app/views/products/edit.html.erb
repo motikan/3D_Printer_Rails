@@ -13,12 +13,11 @@
     <p><%= f.label :title %><%= f.text_field :title %></p>
             
     <input id="product_photo" name="product[photo]" type="file" style="display:none">
-    <font id="photoCover" size="4">ファイルを選択してください</font>
-
-    <%= select_tag 'model[type]', options_for_select({"おちょこ" => "ochoko", "とっくり" => "tokuri"}) %>          
-
+    <p> <p><%= select_tag 'model[type]', options_for_select({"おちょこ" => "ochoko", "とっくり" => "tokuri"}) %></p>   </p>
+    <p><font id="photoCover" size="4">ファイルを選択してください</font></p>
     <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">File Select</a>
     <p><%= f.label :editkey %><%= f.text_field :editkey %></p>
+    <p>Delete<%= f.check_box :deleteflag%></p>
     <%= button_tag(type: "submit", class: "btn btn-default") do %>create</i><% end %>
 <% end %>
 <%= link_to 'Show', @product %>

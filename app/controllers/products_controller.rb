@@ -96,25 +96,29 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-    if params[:product][:editkey] == @product.editkey
     respond_to do |format|
-      if @product.update_attributes(params[:product])
-        File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
-          if params[:model][:type] == 'ochoko'
-            f.write Ochoko.create @product.photo.path
-          elsif params[:model][:type] == 'tokuri'
-            f.write Tokkuri.create @product.photo.path
-          end
+      if params[:product][:editkey] == @product.editkey
+        if @deleteflag == true
+          format.html { redirect_to '/'}
         end
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
+        if @product.update_attributes(params[:product])
+          File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
+            if params[:model][:type] == 'ochoko'
+              f.write Ochoko.create @product.photo.path
+            elsif params[:model][:type] == 'tokuri'
+              f.write Tokkuri.create @product.photo.path
+            end
+          end
+          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
-    end
-    else
-
     end
   end
 
