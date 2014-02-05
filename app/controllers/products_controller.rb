@@ -48,12 +48,6 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
-    editkey = @product.editkey
-    if editkey != params[:product][:editkey]
-    	respond_to do |format|
-    		format.html { redirect_to @product}
-    	end
-    end
   end
 
   # POST /products
@@ -102,6 +96,7 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
+    if params[:product][:editkey] == @product.editkey
     respond_to do |format|
       if @product.update_attributes(params[:product])
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
@@ -117,6 +112,9 @@ class ProductsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
+    end
+    else
+
     end
   end
 

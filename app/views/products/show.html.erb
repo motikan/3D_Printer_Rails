@@ -24,11 +24,8 @@
       </select>
       </div>
       <div style="position:absolute; bottom:0; left:10px;">
-        <%= form_for @product do |f| %>
-        <p><%= f.label :editkey %><%= f.text_field :editkey %></p>
         <%= link_to 'ReCREATE', @product.id.to_s+'/edit', :class => 'btn btn-warning', :style=>'color:#ffffff;' %>
         <%= link_to 'DELETE', @product.id.to_s , method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger', :style=>'color:#ffffff;' %>
-        <% end %>
       </div>
     </div>
   </div>
