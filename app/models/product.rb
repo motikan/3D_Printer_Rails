@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :editkey ,:photo
+  attr_accessible :title, :editkey, :deleteflag ,:photo
   has_attached_file :photo
   
   validates_attachment_content_type :photo, 
