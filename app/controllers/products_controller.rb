@@ -48,6 +48,12 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    editkey = @product.editkey
+    if editkey != params[:product][:editkey]
+    	respond_to do |format|
+    		format.html { redirect_to @product}
+    	end
+    end
   end
 
   # POST /products
@@ -64,7 +70,7 @@ class ProductsController < ApplicationController
             f.write Tokkuri.create @product.photo.path
           end
         end
-        format.html { redirect_to Product.find(107), notice: 'Product was successfully created.' }
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
