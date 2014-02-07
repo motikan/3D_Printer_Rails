@@ -48,6 +48,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @product.editkey = ''
   end
 
   # POST /products
@@ -126,6 +127,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   # DELETE /products/1.json
+=begin
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
@@ -135,4 +137,6 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+=end
+
 end
