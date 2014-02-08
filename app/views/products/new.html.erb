@@ -30,7 +30,7 @@
       <%= select_tag 'model[type]', options_for_select({"Cup" => "ochoko", "Pot" => "tokuri"}) %><br>
       <font id="photoCover" size="4">Select Image file</font>         
       <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">Select Image</a>
-      <%= button_tag(type: "submit", class: "btn btn-default ladda-button") do %>create<% end %>
+      <%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default ladda-button") do %>create<% end %>
     <% end %>
     </div>
   </div>
@@ -65,5 +65,8 @@
 <script type="text/javascript">
   $('input[id=product_photo]').change(function () {
     $('#photoCover').text($(this).val());
+  });
+  $('#submitbutton').click(function () {
+    $('#submitbutton').css('display', 'none');
   });
 </script>

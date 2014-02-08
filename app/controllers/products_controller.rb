@@ -1,4 +1,10 @@
 class ProductsController < ApplicationController
+  # 例外ハンドル
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  rescue_from ActionController::UnknownAction, :with => :error_404
+  rescue_from ActionController::RoutingError, :with => :render_404
+  rescue_from Exception, :with => :render_500
+
   # GET /products
   # GET /products.json
   def index
@@ -98,7 +104,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     respond_to do |format|
-      if params[:product][:editkey] == @product.editkey
+      if params[:product][:editkey] == @product.editkey #エディットキーと一致しているか
         if @product.update_attributes(params[:product])
           if @product.deleteflag == 1
             @product.destroy
@@ -119,6 +125,7 @@ class ProductsController < ApplicationController
             format.json { render json: @product.errors, status: :unprocessable_entity }  
         end
       else
+        @product.editkey = ''
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -138,5 +145,21 @@ class ProductsController < ApplicationController
     end
   end
 =end
+
+def render_404(exception = nil)
+    if exception
+      logger.info "Rendering 404 with exception: #{exception.message}"
+    end
+
+    render :template => "errors/error_404", :status => 404, :layout => 'application', :content_type => 'text/html'
+  end
+
+  def render_500(exception = nil)
+    if exception
+      logger.info "Rendering 500 with exception: #{exception.message}"
+    end
+
+    render :template => "errors/error_500", :status => 500, :layout => 'application'
+  end
 
 end
