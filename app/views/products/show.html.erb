@@ -10,7 +10,7 @@
       <center><h4><%= @product.title %></h4></center>
       <center><%= image_tag @product.photo.url, id: "show_img", style: "margin:10px" %></center>
       
-      <center><%= link_to "Model Download", "/stl_files/"+(@product.id).to_s+".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s+".stl" %></center><br>
+      <center><%= link_to "Download", "/stl_files/"+(@product.id).to_s+".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s+".stl" %></center><br>
       <div>
         Model Color:<input id="mdlClr" style="margin-right: 50px;" type="color" value="#00ff00" onchange="changeOption('ModelColor',this.value)"></input>
         <br>

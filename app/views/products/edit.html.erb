@@ -19,10 +19,10 @@
     <p> <p><%= select_tag 'model[type]', options_for_select({"cup" => "ochoko", "pot" => "tokuri"}) %></p>   </p>
     <p><font id="photoCover" size="3">Select Image file</font></p>
     <p><a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">Select Image</a></p>
-    <p><%= f.label :editkey %><%= text_field :product, :editkey %><%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default", :style => "position:absolute; margin:0;") do %>Send</i><% end %></p>
+    <p><%= f.label :editkey %><%= text_field :product, :editkey %><%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default", :style => "position:absolute; margin:0;") do %>Update</i><% end %></p>
     <p><font color="#f00">Delete</font><%= f.check_box :deleteflag, :style => "position:absolute; margin:2px;" %></p>
 <% end %>
-<%= link_to 'Show', @product %>
+<%= link_to 'Back', @product %>
 </div>
 </div>
 <script type="text/javascript">
