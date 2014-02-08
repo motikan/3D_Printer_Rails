@@ -18,7 +18,7 @@
   <div class="span6" style="background-color: #fff;">
     <%= form_for @product, :url => {:action => 'democreate'} , :html => { :multipart => true } do |f| %>
     <%= f.text_field :title, value: 'DemoFile', style: "display:none" %>
-    <%= f.text_field :deletekey, value: 0, style: "display:none" %>
+    <%= f.text_field :editkey, value: 0, style: "display:none" %>
     <%= image_tag 'droid.png' %>
     <%= button_tag(type: "submit", class: "btn btn-info btn-large") do %>create<% end %>
     <% end %>

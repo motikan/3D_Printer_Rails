@@ -146,6 +146,7 @@ class ProductsController < ApplicationController
   end
 =end
 
+#=begin
 def render_404(exception = nil)
     if exception
       logger.info "Rendering 404 with exception: #{exception.message}"
@@ -161,5 +162,5 @@ def render_404(exception = nil)
 
     render :template => "errors/error_500", :status => 500, :layout => 'application'
   end
-
+#=end
 end
