@@ -45,6 +45,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  # GET /products/contact
+  def contact
+    respond_to do |format|
+      format.html # contact.html.erb
+      format.json { render json: @products }
+    end
+  end
+
   # GET /products/new
   # GET /products/new.json
   def new

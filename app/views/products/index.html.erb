@@ -11,23 +11,31 @@
 <hr>
 
 <div class="row-fluid">
-  <div class="span3">
-
-  </div>
-
-  <div class="span6" style="background-color: #fff;">
-    <%= form_for @product, :url => {:action => 'democreate'} , :html => { :multipart => true } do |f| %>
-    <%= f.text_field :title, value: 'DemoFile', style: "display:none" %>
-    <%= f.text_field :editkey, value: 0, style: "display:none" %>
-    <%= image_tag 'droid.png' %>
-    <%= button_tag(type: "submit", class: "btn btn-info btn-large") do %>create<% end %>
-    <% end %>
-  </div>
-
-  <div class="span3">
-
-  </div>
-
+	<h1>Demo Create</h1>
+	<div id='demo_box'>
+		<div class="span12" style="background-color: #fff;">
+    		<%= form_for @product, :url => {:action => 'democreate'} , :html => { :multipart => true } do |f| %>
+    			<%= f.text_field :title, value: 'DemoFile', style: "display:none" %>
+    			<%= f.text_field :editkey, value: 0, style: "display:none" %>
+    			<div style="float:left;">
+    				<%= image_tag 'droid_demo.png' %>
+    				<br>image
+    			</div>
+    			<font style="float:left; font-size:60px; line-height:271px">+</font>
+    			<div style="float:left;"> 
+    				<%= image_tag 'template.png' %>
+    				<br>Template
+				</div>
+    			<font style="float:left; font-size:60px; line-height:271px">=</font>
+    			<div style="float:left;">
+    				<%= image_tag 'result_demo.png' %>
+    				<br>Result
+    			</div>
+    			<%= button_tag(type: "submit", class: "btn btn-info btn-large") do %>Execute<% end %>
+    		<% end %>
+  		</div>
+  	</div>
+  	<%= link_to 'New Create', new_product_path,  :class => 'btn btn-large btn-success span12', style: "margin:0; color:#fff;" %>
 </div>
 
 <hr>

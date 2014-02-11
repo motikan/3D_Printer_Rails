@@ -24,13 +24,13 @@
         </div>
       <% end %>
       <p><%= f.label :title %><%= f.text_field :title %></p>
-      <p><%= f.label :editkey %><%= f.text_field :editkey %></p>
       <input id="product_photo" name="product[photo]" type="file" style="display:none">
       <p><%= f.label 'Choose Template' %></p>
       <%= select_tag 'model[type]', options_for_select({"Cup" => "ochoko", "Pot" => "tokuri"}) %><br>
-      <font id="photoCover" size="4">Select Image file</font>         
-      <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">Select Image</a>
-      <%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default ladda-button") do %>create<% end %>
+      <p><font id="photoCover" size="4">Select Image file</font>         
+      <a class="btn btn-primary btn-large"  style="width: 170px;" onclick="$('input[id=product_photo]').click();">Select Image</a></p>
+      <p><%= f.label :editkey %>Use to Edit or Delete.<%= f.text_field :editkey %>
+      <%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default ladda-button", :style => "position:absolute; margin:0;") do %>create<% end %></p>
     <% end %>
     </div>
   </div>

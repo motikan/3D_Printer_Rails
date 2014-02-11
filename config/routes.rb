@@ -3,6 +3,7 @@ Site::Application.routes.draw do
   root to: 'products#index'
   match 'list', :to => 'products#list'
   match 'help', :to => 'products#help'
+  match 'contact', :to => 'products#contact'
   post 'democreate', to: 'products#democreate'
   match '*not_found' => 'products#render_404'
 
