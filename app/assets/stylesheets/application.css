@@ -67,7 +67,7 @@
 }
 
 .help_script{
-	padding: 5px;
+	padding: 10px;
 	border: 1px solid #d4d4d4;
 	border-radius: 15px;
 	background-color:#fbfbfb;
@@ -82,9 +82,9 @@
 
 #sns_box{
 	position:fixed;
-	padding: 20px 5px;
-	top:140px;
-	left: 5px;
+	padding: 15px 5px;
+	bottom:0px;
+	right: 5px;
 	height:70px;
 	width:145px;
 	background-color: #F5F5F5;
