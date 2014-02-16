@@ -4,10 +4,13 @@
     <%= image_tag 'step/step01.jpg' %>
   </div>
 
-  <div class="span4 help_script">
-		<p>click [New Create]</p>
-		<hr>
-		<p>「New Create」ボタンをクリック</p>
+  <div class="span4" style="margin-bottom:10px;">
+    <button id="english_btn" class="btn">English</button>
+    <button id="japanese_btn" class="btn">日本語</button>
+  </div>
+
+  <div id="step1" class="span4 help_script">
+    <p>click [New Create]</p>
   </div>
 
 </div>
@@ -18,16 +21,11 @@
     <%= image_tag 'step/step02.jpg' %>
   </div>
 
-  <div class="span4 help_script">
+  <div id="step2" class="span4 help_script">
   	<p>Type your title (optional)</p>
 		<p>Choose your base template</p>
 		<p>Select your picture</p>
 		<p>Type in your edit key <br>(used to delete or modify)</p>
-		<hr>
-		<p>タイトルを入力（任意）</p>
-		<p>ベースとなる3Dモデルのテンプレートを選択</p>
-		<p>画像を選択</p>
-		<p>エディットキーを入力（編集、削除の際に使用）</p>
   </div>
 
 </div>
@@ -38,10 +36,8 @@
     <%= image_tag 'step/step03.jpg' %>
   </div>
 
-  <div class="span4 help_script">
+  <div id="step3" class="span4 help_script">
 	<p>Click [Create]</p>
-	<hr>
-	<p>「Create」ボタンをクリック</p>
   </div>
 
 </div>
@@ -52,13 +48,9 @@
     <%= image_tag 'step/step04.jpg' %>
   </div>
 
-  <div class="span4 help_script">
+  <div id="step4" class="span4 help_script">
 		<p>Your 3D model will be displayed</p>
 		<p>IE is not supported</p>
-		<hr>
-  	<p>作成されたモデルのプレビュー画面が表示されます。</p>
-		<p>（IEはサポートされていません）</p>
-		<p>「Download」ボタンをクリックするとプレビュー画面に表示されているダウンロード開始</p>
   </div>
 
 </div>
@@ -69,11 +61,8 @@
     <%= image_tag 'step/step05.jpg' %>
   </div>
 
-  <div class="span4 help_script">
+  <div id="step5" class="span4 help_script">
 		<p> Like this the download starts</p>
-		<hr>
-  	<p>Google chrome</p>
-		<p>このようにダウンロードが始まります。</p>
   </div>
 
 </div>
@@ -85,14 +74,12 @@
 <iframe width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?ie=UTF8&amp;oe=UTF8&amp;msa=0&amp;msid=217507381704291487812.00044fdbd79d493ad9600&amp;ll=35.004212,135.869105&amp;spn=134.152803,269.371159&amp;t=m&amp;output=embed"></iframe><br /><small>より大きな地図で <a href="https://maps.google.com/maps/ms?ie=UTF8&amp;oe=UTF8&amp;msa=0&amp;msid=217507381704291487812.00044fdbd79d493ad9600&amp;ll=35.004212,135.869105&amp;spn=134.152803,269.371159&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left">Fab Labs on Earth</a> を表示</small>
   </div>
 
-  <div class="span4 help_script">
+  <div id="step6" class="span4 help_script">
 		<p>Bring your data to FABLAB</p>
 		<p>Fablab</p>
 		<p>A fab lab (fabrication laboratory) is a small-scale workshop offering (personal) digital fabrication.<br>
 		(wiki)
 		</p>
-		<hr>
-  	<p>そのファイルを3Dプリンターのある場所へ向かいます。</p>
 	</div>
 
 </div>
@@ -104,10 +91,8 @@
 
   </div>
 
-  <div class="span4 help_script">
+  <div id="step7" class="span4 help_script">
 		<p>Print with 3D Printer</p>
-		<hr>
-		<p>３Dプリンターで印刷をします。</p>
   </div>
 
 </div>
@@ -120,9 +105,36 @@
   </div>
 
   <div class="span4 help_script">
-		<p>Your original cup is made</p>
-		<hr>
-    <p>世界に一つだけのおちょこが完成！！</p>
+    <div id="step8"><p><b>Your original cup is made!!</b></p></div>
+		<%= link_to 'New Create', new_product_path,  :class => 'btn btn-large btn-success', style: "margin:0; color:#fff;" %>
   </div>
 
 </div>
+<script type="text/javascript">
+  $(function(){
+    $('#english_btn').click(
+      function(){
+        $('#step1').html('<p>click [New Create]</p>');
+        $('#step2').html('<p>Type your title (optional)</p><p>Choose your base template</p><p>Select your picture</p><p>Type in your edit key<br>(used to delete or modify)</p>');
+        $('#step3').html('<p>Click [Create]</p>');
+        $('#step4').html('<p>Your 3D model will be displayed</p><p>IE is not supported</p>');
+        $('#step5').html('<p> Like this the download starts</p>');
+        $('#step6').html('<p>Bring your data to FABLAB</p><p>Fablab</p><p>A fab lab (fabrication laboratory) is a small-scale workshop offering (personal) digital fabrication.<br>(wiki)</p>');
+        $('#step7').html('<p>Print with 3D Printer</p>');
+        $('#step8').html('<p><b>Your original cup is made!!</b></p>');
+      }
+    );
+    $('#japanese_btn').click(
+      function(){
+        $('#step1').html('<p>「New Create」ボタンをクリック</p>');
+        $('#step2').html('<p>タイトルを入力（任意）</p><p>ベースとなる3Dモデルのテンプレートを選択</p><p>画像を選択</p><p>エディットキーを入力<br>（編集、削除の際に使用）</p>');
+        $('#step3').html('<p>「Create」ボタンをクリック</p>');
+        $('#step4').html('<p>作成されたモデルのプレビュー画面が表示されます。（IEはサポートされていません）</p><p>「Download」ボタンをクリックするとプレビュー画面に表示されているモデルのダウンロードが開始</p>');
+        $('#step5').html('<p>Google chrome</p><p>このようにダウンロードが始まります。</p>');
+        $('#step6').html('<p>そのファイルを3Dプリンターのある場所へ。</p>');
+        $('#step7').html('<p>３Dプリンターで印刷をします。</p>');
+        $('#step8').html('<p><p>世界に一つだけのおちょこが完成！！</b></p>');
+      }
+    );
+  });
+</script>
