@@ -74,10 +74,32 @@
 }
 
 #demo_box{
-	padding: 5px;
-	height: 350px; 
+	padding: 10px 0;
 	border: 3px solid #d4d4d4;
 	border-radius: 15px;
+	overflow:hidden;
+}
+
+.tab{
+	overflow:hidden;
+}
+.tab li{
+	list-style-type:none;
+	background:#ccc; float:left;
+	margin-right:2px;
+	padding: 0 10px;
+}
+.tab li.select{
+	background:#eee;
+}
+.content li{
+	margin-right: 20px; 
+	padding: 5px 0;
+	list-style-type: none;
+	background:#eee;
+}
+.hide {
+	display:none;
 }
 
 #sns_box{
