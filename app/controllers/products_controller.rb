@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'RMagick'
+
 class ProductsController < ApplicationController
   # 例外ハンドル
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
@@ -67,16 +70,36 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
-  def create
+def create
     @product = Product.new(params[:product])
 
     respond_to do |format|
       if @product.save
+
+        # ベース画像
+        image = Magick::Image.read(@product.photo.path.to_s).first
+        x = image.columns
+        y = image.rows
+
+        image = image.change_geometry("#{x}x#{y}") do |cols, rows, img|
+          img.resize!(cols, rows)
+          img.background_color = 'white'
+
+          img.extent(x * (y.to_f / x.to_f) * 3.5, y, 0, 0)
+        end
+
+        #png変換
+        image.format = 'PNG'
+        base_image_path = (@product.photo.path.to_s).gsub('.jpg', '.png')
+        image.write(base_image_path)
+        
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
           if params[:model][:type] == 'ochoko'
-            f.write Ochoko.create @product.photo.path
+            #f.write Ochoko.create @product.photo.path
+            f.write Ochoko.create base_image_path
           elsif params[:model][:type] == 'tokuri'
-            f.write Tokkuri.create @product.photo.path
+            #f.write Tokkuri.create @product.photo.path
+            f.write Tokkuri.create base_image_path
           end
         end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -88,24 +111,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # POST /products
-  # POST /products.json
-  def democreate
-    @product = Product.new(params[:product])
-
-    respond_to do |format|
-      if @product.save
-        File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
-            f.write Ochoko.create "#{Rails.root.to_s}/public/photos/original/missing.png"
-        end
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # PUT /products/1
   # PUT /products/1.json

@@ -4,7 +4,6 @@ Site::Application.routes.draw do
   match 'list', :to => 'products#list'
   match 'help', :to => 'products#help'
   match 'contact', :to => 'products#contact'
-  post 'democreate', to: 'products#democreate'
   match '*not_found' => 'products#render_404'
 
   # The priority is based upon order of creation:

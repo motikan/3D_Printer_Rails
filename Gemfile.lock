@@ -94,6 +94,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    rmagick (2.13.2)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -129,6 +130,7 @@ DEPENDENCIES
   libv8 (~> 3.11.8)
   paperclip!
   rails (= 3.2.14)
+  rmagick
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
