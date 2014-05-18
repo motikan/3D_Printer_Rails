@@ -41,6 +41,7 @@ gem 'jquery-rails'
 gem 'libv8', '~> 3.11.8'
 gem 'execjs'
 gem 'therubyracer'
+gem 'unicorn'
 
 group :development, :test do
   gem 'sqlite3'

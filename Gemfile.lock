@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: 6459f2c00f16051ec397fe911bc21078291ce3b8
+  revision: 113198f979bc793882506114fcc3dc9f6c4e4575
   specs:
-    paperclip (3.5.2)
+    paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -40,7 +40,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.3)
     builder (3.0.4)
-    chunky_png (1.2.9)
+    chunky_png (1.3.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -51,27 +51,28 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
+    coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
-    jquery-rails (3.0.4)
+    jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kgio (2.9.2)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    multi_json (1.8.2)
-    polyglot (0.3.3)
+    multi_json (1.9.2)
+    polyglot (0.3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-ssl (1.3.3)
+    rack-ssl (1.3.4)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -90,12 +91,13 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.1.0)
+    raindrops (0.13.0)
+    rake (10.3.2)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
     rmagick (2.13.2)
-    sass (3.2.12)
+    sass (3.3.4)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -105,19 +107,23 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.8)
+    sqlite3 (1.3.9)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
-    thor (0.18.1)
+    thor (0.19.1)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.38)
-    uglifier (2.3.2)
+    tzinfo (0.3.39)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -135,3 +141,4 @@ DEPENDENCIES
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
+  unicorn

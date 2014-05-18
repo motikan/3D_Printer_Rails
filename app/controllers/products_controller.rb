@@ -2,11 +2,14 @@ require 'rubygems'
 require 'RMagick'
 
 class ProductsController < ApplicationController
+
+  include ProductsHelper
+
   # 例外ハンドル
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
-  rescue_from ActionController::UnknownAction, :with => :error_404
-  rescue_from ActionController::RoutingError, :with => :render_404
-  rescue_from Exception, :with => :render_500
+  #rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  #rescue_from ActionController::UnknownAction, :with => :error_404
+  #rescue_from ActionController::RoutingError, :with => :render_404
+  #rescue_from Exception, :with => :render_500
 
   # GET /products
   # GET /products.json
@@ -76,30 +79,15 @@ def create
     respond_to do |format|
       if @product.save
 
-        # ベース画像
-        image = Magick::Image.read(@product.photo.path.to_s).first
-        x = image.columns
-        y = image.rows
-
-        image = image.change_geometry("#{x}x#{y}") do |cols, rows, img|
-          img.resize!(cols, rows)
-          img.background_color = 'white'
-
-          img.extent(x * (y.to_f / x.to_f) * 3.5, y, 0, 0)
-        end
-
-        #png変換
-        image.format = 'PNG'
-        base_image_path = (@product.photo.path.to_s).gsub('.jpg', '.png')
-        image.write(base_image_path)
+        convertPng @product.photo.path.to_s
         
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
           if params[:model][:type] == 'ochoko'
             #f.write Ochoko.create @product.photo.path
-            f.write Ochoko.create base_image_path
+            f.write Ochoko.create @base_image_path
           elsif params[:model][:type] == 'tokuri'
             #f.write Tokkuri.create @product.photo.path
-            f.write Tokkuri.create base_image_path
+            f.write Tokkuri.create @base_image_path
           end
         end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -159,7 +147,7 @@ def create
   end
 =end
 
-#=begin
+=begin
 def render_404(exception = nil)
     if exception
       logger.info "Rendering 404 with exception: #{exception.message}"
@@ -175,5 +163,5 @@ def render_404(exception = nil)
 
     render :template => "errors/error_500", :status => 500, :layout => 'application'
   end
-#=end
+=end
 end
