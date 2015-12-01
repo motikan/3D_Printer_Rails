@@ -4,11 +4,7 @@ require 'RMagick'
 class ProductsController < ApplicationController
 
   include ProductsHelper
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> d4afe528864652b050aa9607125a76c4720118d9
   # 例外ハンドル
   #rescue_from ActiveRecord::RecordNotFound, :with => :render_404
   #rescue_from ActionController::UnknownAction, :with => :error_404
@@ -84,11 +80,7 @@ def create
       if @product.save
 
         convertPng @product.photo.path.to_s
-<<<<<<< HEAD
         
-=======
-
->>>>>>> d4afe528864652b050aa9607125a76c4720118d9
         File.open "#{Rails.root}/public/stl_files/#{@product.id}.stl", 'w' do |f|
           if params[:model][:type] == 'ochoko'
             #f.write Ochoko.create @product.photo.path
