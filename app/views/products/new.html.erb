@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-md-6">
+      <h4>Good Image</h4>
+      <%= image_tag 'droid.png', :style => "width:300px;" %>
+      <p style="text-align: right;">droid.png</p>
+      <table style="width:300px;">
+        <tr><td><h4>widht : height</h4></td><td><h3><font color="#00f">3 : 1</font></h3></td></tr>
+        <tr><td><h4>File Extension</h4></td><td><h3><font color="#00f">PNG</font></h3></td></tr>
+      </table>
+      <%= image_tag 'good_result.jpg', :style => "width:300px;" %>
+
+      <h4><font color="#ff0000">Bad Image</font></h4>
+      <%= image_tag 'droid.jpg' %>
+      <p style="text-align: right;">droid.jpg</p>
+      <table>
+        <tr>
+          <td><h4>File Extension</h4></td>
+          <td><h4>Not 「PNG」</h4></td>
+        </tr>
+        </table>
+        <%= image_tag 'bad_result.png', :style => "width:300px;" %>
+
+        <h3><font color="#ffa500">Not Good Image</font> </h3>
+      <%= image_tag 'bad.png' %>
+      <table style="width:300px;">
+        <tr><td><h4>widht : height</h4></td><td><h3><font color="#ffa500">Not 3 : 1</font></h3></td></tr>
+      </table>
+      <%= image_tag 'nogood_result.jpg', :style => "width:300px;" %>
+
+    </div>
+    <div class="span4" style="background-color:#fbfbfb;">
+     
+    </div>  
+
+    <div class="col-md-6">
+    <%= form_for @product, :html => { :class => "form-horizontal" ,:multipart => true } do |f| %>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Choose Template' %>
+        <%= select_tag 'model[type]', options_for_select({"Mini Cup" => "0", "Mini Pot" => "1"}), :class => 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <%= f.label 'Select Image file' %>
+        <%= file_field_tag 'product[image]', :style => "display:none" %>
+        <a class="btn btn-primary form-control" onclick="$('input[id=product_image]').click();">Select Image</a>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :editkey %>
+        <%= f.text_field :editkey, placeholder: 'Use to Edit or Delete.', :class => 'form-control' %>
+      </div>
+
+      <%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default ladda-button", :style => "position:absolute; margin:0;") do %>create<% end %></p>
+    <% end %>
+    </div>
+  </div>
+    
+<script type="text/javascript">
+  $('input[id=product_image]').change(function () {
+    $('#photoCover').text($(this).val());
+  });
+  $('#submitbutton').click(function () {
+    $('#submitbutton').css('display', 'none');
+  });
+</script>

@@ -16,7 +16,11 @@
 !/log/.keep
 /tmp
 /public/stl_files/
+/public/stlFiles/*
+!/public/stlFiles/.keep
 /public/system/products
+/public/uploads/product/image/*
+!/public/uploads/product/image/README.md
 
 *.rbc
 capybara-*.html
