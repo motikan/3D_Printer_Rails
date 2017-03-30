@@ -3,113 +3,13 @@
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
-
-
-#top{
-	margin-top: 10px;
-	height: 300px;
-	background-image: url("image.png");
-	border-radius: 5px;
-	background-repeat: no-repeat;
-}
-
-.item_box{
-	height: 250px;
-	border-radius: 15px;
-	border: 3px solid #d4d4d4;
-	background-image: url("item_box_img.png");
-	background-repeat: no-repeat;
-	box-shadow: 5px 5px 5px #C9F;/* 右に5px、下に5px */
-	-webkit-box-shadow: 5px 5px 5px #d0d0d0;
-	-moz-box-shadow: 5px 5px 5px #C9F;
-	filter:alpha(opacity=85);
-	-moz-opacity:0.85;
-    -khtml-opacity: 0.85;
-    opacity:0.85;
-}
-
-.item_box_img{
-	height: 150px;
-	border-radius: 15px 15px 0 0;
-}
-
-.item_box img{
-	margin-top: 10px;
-	max-height: 130px;
-	max-width: 400px;
-	vertical-align: middle;
-}
-
-.item_box_child{
-	position: relative;
-	left: 10px;
-	height: 48px;
-	width: 380px;
-	padding-left: 50px;
-	border-radius: 5px;
-	background-image: url("item_box_title.png");
-	background-repeat: no-repeat;
-}
-
-.help_img{
-	padding: 5px;
-	border: 1px solid #d4d4d4;
-	border-radius: 15px;
-	background-color:#fbfbfb;
-}
-
-.help_script{
-	padding: 10px;
-	border: 1px solid #d4d4d4;
-	border-radius: 15px;
-	background-color:#fbfbfb;
-}
-
-#demo_box{
-	padding: 10px 0;
-	border: 3px solid #d4d4d4;
-	border-radius: 15px;
-	overflow:hidden;
-}
-
-.tab{
-	overflow:hidden;
-}
-.tab li{
-	list-style-type:none;
-	background:#ccc; float:left;
-	margin-right:2px;
-	padding: 0 10px;
-}
-.tab li.select{
-	background:#eee;
-}
-.content li{
-	margin-right: 20px; 
-	padding: 5px 0;
-	list-style-type: none;
-	background:#eee;
-}
-.hide {
-	display:none;
-}
-
-#sns_box{
-	position:fixed;
-	padding: 15px 5px;
-	bottom:0px;
-	right: 5px;
-	height:70px;
-	width:145px;
-	background-color: #F5F5F5;
-	border-radius: 5px;
-	border: 1px solid #d4d4d4;
-}
