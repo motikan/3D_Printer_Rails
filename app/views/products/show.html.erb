@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col-md-8" style="background-color:#e4e4e4;">
+      <canvas id="cv" width="600" height="600" ></canvas>
+      <div id="tip" style="display:block; color:#ffffff; padding:2px; position:absolute; left:10px; bottom:20px; background-color:#606060; height:40px; border-radius:5px; opacity:1;"> 
+        Drag mouse to rotate <br> Drag mouse with shift pressed to zoom
+      </div>
+    </div>
+    <div class="col-md-4" style="background-color:#f4f4f4;">
+      <center><h4><%= @product.title %></h4></center>
+      <center><%= image_tag @product.image.to_s, id: "show_img" %></center>
+      
+      <center><%= link_to "Download", "/stlFiles/"+(@product.id).to_s + ".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s + ".stl" %></center><br>
+      <div>
+        <%= label_tag 'Model Color' %>
+        <%= color_field "color", "model", :value => "#00ff00", :class => "form-control" %>
+        
+        <%= label_tag 'Back Color Top' %>
+        <%= color_field "color", "back1", :value => "#ffffff", :class => "form-control" %>
+
+        <%= label_tag 'Back Color Bottom' %>
+        <%= color_field "color", "back2", :value => "#515151", :class => "form-control" %>
+
+        <%= label_tag 'Model Quality' %>
+        <%= select :model, :quality,
+            [["High", "high"], ["Medium", "medium"], ["Low", "low"]],
+                {:selected => "medium"}, {:class => "form-control"} %>
+      </div>
+        <%= link_to 'Edit', @product.id.to_s+'/edit', :class => 'btn btn-warning' %>
+    </div>
+  </div>
+    This web application do not support the InternetExplorer.
+
+<script type="text/javascript">
+$(function(){
+    openByGet();
+
+    $("#color_model").change(function(){
+        changeOption("ModelColor", $(this).val());
+    });
+
+    $("#color_back1").change(function(){
+        changeOption("BackgroundColor1", $(this).val());
+    });
+
+    $("#color_back2").change(function(){
+        changeOption("BackgroundColor2", $(this).val());
+    });
+
+    $("#model_quality").change(function(){
+        changeOption("Definition", $(this).val());
+    });
+});
+
+var viewer3d;
+function getOptions(){
+    var mc = document.getElementById("color_model").value;
+    var bc1 = document.getElementById("color_back1").value;
+    var bc2 = document.getElementById("color_back2").value;
+    var ren = 'Flat';
+    var def = document.getElementById("model_quality").value;
+    return {ModelColor: mc,
+            BackgroundColor1: bc1,
+            BackgroundColor2: bc2,
+            RenderMode: ren,
+            Definition: def};
+}
+function readSTLfile(opt){
+    var canvas = document.getElementById('cv');
+    viewer3d = new JSC3D.Viewer(canvas);
+    viewer3d.setParameter('SceneUrl', opt.SceneUrl);
+    viewer3d.setParameter('InitRotationX', -80);
+    viewer3d.setParameter('InitRotationY', 0);
+    viewer3d.setParameter('InitRotationZ', 0);
+    viewer3d.setParameter('ModelColor', opt.ModelColor);
+    viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
+    viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
+    viewer3d.setParameter('RenderMode', opt.RenderMode);
+    viewer3d.setParameter('Definition', opt.Definition);
+    viewer3d.init();
+    viewer3d.update();
+}
+
+function changeOption(strOpt, strValue){
+    console.log("change " + strOpt + " to " + strValue);
+    viewer3d.setParameter(strOpt, strValue);
+    viewer3d.init();
+    viewer3d.update();
+}
+
+function openByGet(){
+    var url = '/stlFiles/<%= @product.id %>.stl';
+    var opt = getOptions();
+    opt.SceneUrl = url;
+    readSTLfile(opt);
+}
+</script>
