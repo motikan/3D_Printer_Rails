@@ -68,8 +68,8 @@
       </div>
 
       <div class="form-group row">
-        <%= f.label :editkey %>
-        <%= f.text_field :editkey, placeholder: 'Use to Edit or Delete.', :class => 'form-control' %>
+        <%= f.label "Delete Code" %>
+        <%= f.text_field :deletekey, placeholder: 'Use to Delete.', :class => 'form-control' %>
       </div>
 
       <%= button_tag(type: "submit", id: "submitbutton", class: "btn btn-default ladda-button", :style => "position:absolute; margin:0;") do %>create<% end %></p>

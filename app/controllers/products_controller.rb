@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
-    @product.editkey = ''
+    @product.deletekey = ''
   end
 
   # POST /products
@@ -38,11 +38,10 @@ class ProductsController < ApplicationController
   def create
     product = Product.create(image: params[:product][:image])
     product.title = params[:product][:title]
+    product.deletekey = params[:product][:deletekey]
 
     respond_to do |format|
       if product.save!
-        puts product.image.url
-
         File.open "#{Rails.root}/public/stlFiles/#{product.id}.stl", 'w' do |f|
             f.write Ochoko.create "#{Rails.root}/public" + product.image.url.to_s
         end
@@ -82,14 +81,14 @@ class ProductsController < ApplicationController
   end
 
   # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to products_url }
-      format.json { head :no_content }
+    product = Product.find(params[:id])
+    
+    if product.deletekey == params[:code] then
+      #product.destroy
+      render :json => {'result' => true}
+    else
+      render :json => {'result' => false}
     end
   end
 

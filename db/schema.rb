@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170330134751) do
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.string   "image"
-    t.string   "editkey"
+    t.string   "deletekey"
     t.boolean  "deleteflag", default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

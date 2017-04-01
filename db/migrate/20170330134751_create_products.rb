@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration
     create_table :products do |t|
       t.string :title
       t.string :image
-      t.string :editkey
+      t.string :deletekey
       t.boolean :deleteflag, default: 0
       t.timestamps null: false
     end

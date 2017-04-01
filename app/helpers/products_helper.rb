@@ -1,5 +1,5 @@
 require_relative 'stl/stl'
-require_relative  'stl/util2d'
+require_relative 'stl/util2d'
 
 module ProductsHelper
 
@@ -8,7 +8,7 @@ class Ochoko
   BASE_HEIGHT = 0.3
   CUP_HEIGHT = 1.5
   #THICKNESS = 0.15
-   THICKNESS = 0.15
+  THICKNESS = 0.15
   W, H = 200, 200
 
   def self.create imgfile
