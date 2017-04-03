@@ -28,7 +28,9 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-    @product = Product.create(image: params[:product][:image])
+    @product = Product.create()
+    puts "File " + params[:product][:image].to_s
+    @product.image =  params[:product][:image]
     @product.title = params[:product][:title]
     @product.deletekey = params[:product][:deletekey]
 

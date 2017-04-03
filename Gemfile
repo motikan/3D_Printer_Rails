@@ -19,6 +19,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'carrierwave', '~> 1.0'
+gem 'rmagick'
 gem 'chunky_png'
 
 # Use jquery as the JavaScript library

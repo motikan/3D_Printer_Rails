@@ -5273,8 +5273,7 @@ JSC3D.StlLoader.prototype.loadFromUrl = function(urlName) {
 	if(this.onprogress) {
 		this.onprogress('Loading STL file ...', 0);
 		xhr.onprogress = function(event) {
-			self.onprogress('Loading STL file ...', event.loaded / event.total);
-			console.log(event.total);
+			self.onprogress('Loading STL file ...' + event.loaded + " / "+ event.total, event.loaded / event.total);
 		};
 	}
 
