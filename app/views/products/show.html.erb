@@ -7,10 +7,15 @@
         <p>This web application do not support the InternetExplorer.</p>
     </div>
     <div class="col-md-3" style="background-color:#f4f4f4;">
-        <center><h4><%= @product.title %></h4></center>
-        <center><%= image_tag @product.image.to_s, id: "show_img" %></center>
+        <div class="row">
+            <center><h4><%= @product.title %></h4></center>
+            <center><%= image_tag @product.image.to_s, :width => "100%" %></center>
+        </div>
 
-        <center><%= link_to "Download", "/stlFiles/"+(@product.id).to_s + ".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s + ".stl" %></center><br>
+        <div class="row">
+            <center><%= link_to "Download", "/stlFiles/" + (@product.id.to_s) + ".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s + ".stl" %></center>
+        </div>
+
         <div class="row">
             <div class="col-md-6">
                 <%= label_tag 'Model' %>
@@ -33,7 +38,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-md-offset-8">
                 <%= button_tag "Delete", {:id => "delete", :class => "btn btn-danger"} %>
             </div>
         </div>
@@ -82,6 +87,7 @@ $(function(){
 });
 
 var viewer3d;
+
 function getOptions(){
     var mc = document.getElementById("color_model").value;
     var bc1 = document.getElementById("color_back1").value;
@@ -94,6 +100,7 @@ function getOptions(){
             RenderMode: ren,
             Definition: def};
 }
+
 function readSTLfile(opt){
     var canvas = document.getElementById('cv');
     viewer3d = new JSC3D.Viewer(canvas);

@@ -4,7 +4,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :title
       t.string :image
       t.string :deletekey
-      t.boolean :deleteflag, default: 0
       t.timestamps null: false
     end
   end

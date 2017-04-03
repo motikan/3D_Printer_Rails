@@ -1,5 +1,5 @@
-require_relative 'stl/stl'
 require_relative 'stl/util2d'
+require_relative 'stl/stl'
 
 module ProductsHelper
 

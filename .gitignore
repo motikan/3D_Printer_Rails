@@ -21,6 +21,7 @@
 /public/system/products
 /public/uploads/product/image/*
 !/public/uploads/product/image/README.md
+/public/assets/*
 
 *.rbc
 capybara-*.html
