@@ -2,10 +2,8 @@ class ProductsController < ApplicationController
     include ProductsHelper
 
   # GET /products
-  # GET /products.json
   def index
-    @products = Product.find(:all, :order => "id DESC", :limit => 8)
-    @product = Product.new
+    @products = Product.order("id DESC").limit(8)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +11,6 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1
-  # GET /products/1.json
   def show
     @product = Product.find(params[:id])
     respond_to do |format|
@@ -29,7 +26,6 @@ class ProductsController < ApplicationController
   # POST /products
   def create
     @product = Product.create()
-    puts "File " + params[:product][:image].to_s
     @product.image =  params[:product][:image]
     @product.title = params[:product][:title]
     @product.deletekey = params[:product][:deletekey]

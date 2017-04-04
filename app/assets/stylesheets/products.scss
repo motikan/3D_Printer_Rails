@@ -2,7 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  background-image: image-url("background.png");
+    background-image: image-url("background.png");
+}
+
+#top{
+    background: url("top.png") 0 0 no-repeat;
+    background-position: center center; 
+    background-size: contain;
+    height: 300px;
+}
+
+#top > a{
+    position:absolute;
+    top: 60%;
+    margin-top: -60px;
+    font-size: 3.5vw;
 }
 
 .row-eq-height {
