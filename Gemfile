@@ -15,13 +15,14 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'therubyracer'
-gem 'less-rails'
+gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'carrierwave', '~> 1.0'
 gem 'rmagick'
 gem 'chunky_png'
 gem 'unicorn'
+gem 'kaminari'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/MustafaZain/less-rails
+  revision: 946213803a5b274260dad17526eb201230e4a761
+  specs:
+    less-rails (2.8.1)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -69,14 +79,21 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     kgio (2.11.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.8.0)
-      actionpack (>= 4.0)
-      less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
     libv8 (3.16.14.19)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -179,7 +196,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  less-rails
+  kaminari
+  less-rails!
   rails (= 4.2.3)
   rmagick
   sass-rails (= 5.0.6)

@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.order("id DESC").limit(8)
+    @products = Product.page(params[:page]).per(10).order("id DESC").limit(8)
 
     respond_to do |format|
       format.html # index.html.erb
