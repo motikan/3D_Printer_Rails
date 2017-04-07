@@ -19,6 +19,32 @@ body {
     font-size: 3.5vw;
 }
 
+.paging{
+    text-align: center;
+}
+
+.product_div{
+    background-color: rgba(126, 126, 126, 0.5);
+    padding: 10px;
+    border-radius: 10px;            /* CSS3 */  
+    -webkit-border-radius: 10px;    /* Safari, Google Chrome */  
+    -moz-border-radius: 10px;       /* Firefox */  
+}
+
+.product_image_div{
+    text-align: center;
+    height:100px;
+}
+
+.product_image{
+    max-width:100%;
+    max-height:100px;
+}
+
+.product_title_div{
+    top:-1px;
+}
+
 .row-eq-height {
     display: flex;
     flex-wrap: wrap;

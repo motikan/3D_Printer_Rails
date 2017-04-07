@@ -13,24 +13,30 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
   <h1>Recent Models</h1>
-  <%= paginate(@products) %>
+  <div class="paging">
+    <%= paginate(@products) %>
+  </div>
   <% @products.each_with_index do |product, i| %>
     <% if i % 2 == 0 %>
-      <div class="row">
+      <div class="row row-eq-height">
     <% end %>
-      <div class="col-md-6 item_box">
-        <div class="item_box_img">
-          <center><%= image_tag product.image.url %></center>
+        <div class="col-md-6">
+          <div class="product_div">
+            <div class="product_image_div">
+              <%= image_tag product.image.url, :class => "product_image" %>
+            </div>
+            <div class="product_title_div">
+              <h2><%= product.title %></h2>
+              <%= link_to 'Show', product, :class => 'btn btn-primary' %>
+            </div>
+          </div>
         </div>
-      <div class="item_box_child">
-        <h2><%= product.title %></h2>
-        <%= link_to 'Show', product, :class => 'btn btn-primary' %>
-      </div>
-      </div>
-      <% if i%2==1 || i+1 ==  @products.length %>
+      <% if i%2 == 1 || i + 1 ==  @products.length %>
         </div>
       <% end %>
     <% end %>
-    <%= paginate(@products) %>
+    <div class="paging">
+      <%= paginate(@products) %>
+    </div>
   </div>
 </div>
