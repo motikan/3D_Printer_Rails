@@ -1,17 +1,15 @@
-<div class="row">
-  <div id="top" class="jumbotron col-md-10 col-md-offset-1">
-    <%= link_to 'Create', new_product_path, :id => "create_btn",  :class => 'btn btn-lg btn-success'%>
-  </div>
+<div id="top">
+  <%= link_to 'Create', new_product_path, :id => "create_btn", :class => 'btn btn-lg btn-success'%>
 </div>
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-12">
     <center><iframe src="//player.vimeo.com/video/86807850" width="100%" height="422" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-12">
   <h1>Recent Models</h1>
   <div class="paging">
     <%= paginate(@products) %>

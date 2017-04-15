@@ -1,21 +1,29 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
+.jumbotron {
     background-image: image-url("background.png");
+    margin: 0px;
+    pagging: 0px;
+}
+
+.container-fluid{
+    margin: 0px;
+    padding: 0px;
 }
 
 #top{
     background: url("top.png") 0 0 no-repeat;
-    background-position: center center; 
+    background-position: center center;
     background-size: contain;
-    height: 300px;
+    height: 400px;
 }
 
 #top > a{
     position:absolute;
-    top: 60%;
-    margin-top: -60px;
+    top: 45%;
+    margin-top: -80px;
+    margin-left: 5%;
     font-size: 3.5vw;
 }
 

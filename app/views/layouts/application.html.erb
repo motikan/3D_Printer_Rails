@@ -7,14 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
 <nav class="navbar navbar-default navbar-fixed-top" style="">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="/"><%= image_tag "logo.png", :height => "100%" %></a>
-    </div>
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"><%= image_tag "logo.png", :height => "100%" %></a>
+  </div>
 </nav>
-    <div style="height:60px;"></div>
-    <%= yield %>
+<div class="jumbotron">
+  <div class="container-fluid"> 
+      <div style="height:10px;"></div>
+      <%= yield %>
+  </div>
 </div>
 <footer class="footer">
     <center><p class="text-muted"><a href="https://twitter.com/motikan2010" target="_blank">@motikan2010</a> 2013 - </p></center>
