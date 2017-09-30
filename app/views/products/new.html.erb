@@ -1,110 +1,83 @@
-<div class="row">
-    <div class="col-md-6">
-        <h4>Good Image</h4>
-        <%= image_tag 'droid.png', :style => "width:300px;" %>
-        <p style="text-align: right;">droid.png</p>
-        <table style="width:300px;">
-            <tr>
-                <td><h4>widht : height</h4></td>
-                <td><h3><font color="#00f">3 : 1</font></h3></td>
-            </tr>
-            <tr>
-                <td><h4>File Extension</h4></td>
-                <td><h3><font color="#00f">PNG</font></h3></td>
-            </tr>
-        </table>
-        <%= image_tag 'good_result.jpg', :style => "width:300px;" %>
-
-        <h4><font color="#ff0000">Bad Image</font></h4>
-        <%= image_tag 'droid.jpg' %>
-        <p style="text-align: right;">droid.jpg</p>
-        <table>
-            <tr>
-                <td><h4>File Extension</h4></td>
-                <td><h4>Not 「PNG」</h4></td>
-            </tr>
-        </table>
-        <%= image_tag 'bad_result.png', :style => "width:300px;" %>
-
-        <h3><font color="#ffa500">Not Good Image</font> </h3>
-        <%= image_tag 'bad.png' %>
-        <table style="width:300px;">
-            <tr>
-                <td><h4>widht : height</h4></td>
-                <td><h3><font color="#ffa500">Not 3 : 1</font></h3></td>
-            </tr>
-        </table>
-        <%= image_tag 'nogood_result.jpg', :style => "width:300px;" %>
-    </div>
-
-    <div class="col-md-6">
-    <%= form_for @product, :html => { :class => "form-horizontal" ,:multipart => true } do |f| %>
-        <% if @product.errors.any? %>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-danger">
-                    <ul>
-                    <% @product.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                    <% end %>
-                    </ul>
-                </div>
-            </div>
+<div class="col-md-10 col-md-offset-1" style="background-color: #CCCCCC">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
         </div>
-        <% end %>
-
-        <div class="row">
-            <div class="col-md-7">
-                <div class="form-group">
-                    <%= f.label :title %>
-                    <%= f.text_field :title, :class => 'form-control' %>
+        <div class="panel-body">
+          <div class="col-md-8 col-md-offset-2">
+          <%= form_for @product, :html => { :class => "form-horizontal" ,:multipart => true } do |f| %>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="image-preview"></div>
+                  <% if @product.errors.any? %>
+                      <div class="alert alert-danger">
+                        <ul>
+                          <% @product.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
+              </div>
                 <div class="form-group">
+                  <div class="col-md-12">
+                  <%= f.label :title %>
+                  <%= f.text_field :title, :class => 'form-control' %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
                     <%= f.label 'Base Model' %>
                     <%= select_tag 'model[type]', options_for_select({"Mini Cup" => "0", "Mini Pot" => "1"}), :class => 'form-control' %>
-                </div>
-            </div>
-            <div class="col-md-3 col-md-offset-1">
-                <div class="form-group">
+                  </div>
+                  <div class="col-md-6">
                     <%= f.label "Delete Code" %>
-                    <%= f.text_field :deletekey, placeholder: 'Use to Delete.',
-                        :class => 'form-control' %>
+                    <%= f.text_field :deletekey, placeholder: 'Use to Delete.', :class => 'form-control' %>
+                  </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <%= file_field_tag 'product[image]', :style => "display:none" %>
-                    <a class="btn btn-primary form-control" onclick="$('input[id=product_image]').click();">Select Image File</a>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label class="input-group-btn">
+                      <span class="btn btn-primary">
+                        Select Image File <%= file_field_tag 'product[image]', :style => "display:none" %>
+                      </span>
+                    </label>
+                  </div>
+                  <div class="col-md-9">
+                    <input id="file-name" type="text" class="form-control" disabled />
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-md-offset-1">
-                <%= submit_tag "Create", {id: "submit_button", :class => "btn btn-default"}  %>
-            </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= submit_tag "Create", {id: "submit_button", :class => "btn btn-success btn-lg"} %>
+                  </div>
+                </div>
+          <% end %>
+          </div>
         </div>
-    <% end %>
+        <div class="panel-footer"></div>
+      </div>
     </div>
+    </div>
+  </div>
 </div>
-    
-<script type="text/javascript">
-  $('input[id=product_image]').change(function () {
-    $('#photoCover').text($(this).val());
-  });
 
-  $('#submit_button').click(function () {
-    $("form").submit();
-    // 送信ボタンを無効化
-    $("#submit_button").prop("disabled", true);
-    // 10秒後に有効化
-    setTimeout(function() {
-      $("#submit_button").prop("disabled", false);
-    }, 10000);
-  });
+<script>
+    $(document).on('change', ':file', function() {
+        var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader){
+            return;
+        }
+        // 画像ファイル名を表示
+        $('#file-name').val($(this).prop('files')[0].name);
+        if (/^image/.test(files[0].type)){
+            var reader = new FileReader();
+            reader.readAsDataURL(files[0]);
+            reader.onloadend = function(){
+                $('#image-preview').css("background-image", "url("+this.result+")");
+            }
+        }
+    });
 </script>
