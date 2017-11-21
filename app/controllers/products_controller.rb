@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    include ProductsHelper
+  include ProductsHelper
 
   # GET /products
   def index
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         File.open "#{Rails.root}/public/stlFiles/#{@product.id}.stl", 'w' do |f|
-            f.write Ochoko.create "#{Rails.root}/public" + @product.image.url.to_s
+          f.write Ochoko.create "#{Rails.root}/public" + @product.image.url.to_s
         end
 
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

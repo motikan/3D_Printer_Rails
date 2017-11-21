@@ -1,15 +1,19 @@
 <div class="row row-eq-height">
   <div class="col-md-7 col-md-offset-1">
-    <div class="panel panel-default">
-      <div class="panel-heading"></div>
-      <div class="panel-body text-center">
-        <canvas id="cv" width="620" height="600" ></canvas>
+    <!-- Model Viewer -->
+    <div id="model-viewer" class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body text-center">
+          <canvas id="cv" width="620" height="600"></canvas>
+        </div>
+        <div class="panel-footer"></div>
       </div>
-      <div class="panel-footer"></div>
     </div>
   </div>
   <div class="col-md-3">
-    <div class="row">
+    <!-- Model Operator -->
+    <div id="model-operator" class="row">
       <div class="panel panel-default">
         <div class="panel-heading"></div>
         <div class="panel-body">
@@ -20,9 +24,8 @@
 
           <div class="row text-center">
             <%= link_to "Download", "/stlFiles/" + (@product.id.to_s) + ".stl",
-                        class: "btn btn-info btn-large",style: "width:230px;", download: @product.id.to_s + ".stl" %>
+                        class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s + ".stl" %>
           </div>
-
           <div class="row">
             <div class="col-md-6">
               <%= label_tag 'Model' %>
@@ -53,98 +56,103 @@
         <div class="panel-footer"></div>
       </div>
     </div>
-    <div class="row">
+
+    <!-- Tips -->
+    <div id="viewer-tip" class="row">
       <div class="well well-sm">
         Drag mouse to rotate <br/> Drag mouse with [Shift pressed] to zoom
         <h4><small># This web application do not support the InternetExplorer</small></h4>
       </div>
     </div>
+
   </div>
 </div>
+
 <script type="text/javascript">
 $(function(){
-    openByGet();
+  openByGet();
 
-    $("#color_model").change(function(){
-        changeOption("ModelColor", $(this).val());
-    });
+  $('#color_model').change(function(){
+    changeOption('ModelColor', $(this).val());
+  });
 
-    $("#color_back1").change(function(){
-        changeOption("BackgroundColor1", $(this).val());
-    });
+  $('#color_back1').change(function(){
+    changeOption('BackgroundColor1', $(this).val());
+  });
 
-    $("#color_back2").change(function(){
-        changeOption("BackgroundColor2", $(this).val());
-    });
+  $('#color_back2').change(function(){
+    changeOption('BackgroundColor2', $(this).val());
+  });
 
-    $("#model_quality").change(function(){
-        changeOption("Definition", $(this).val());
-    });
+  $('#model_quality').change(function(){
+    changeOption('Definition', $(this).val());
+  });
 
-    $("#delete").click(function(){
-        deleteCode = prompt();
-        if(deleteCode){
-            $.ajax({
-                type: "POST",
-                url: "<%= product_path(@product) %>",
-                data: "_method=delete&code=" + deleteCode,
-                success: function(data){
-                    if(data.result){
-                        alert("Delete Complete.");
-                        location.href = "<%= products_path %>";
-                    }else{
-                        alert("No match Delete code.");
-                    }
-                }
-            });
-        }else{
-
+  $('#delete').click(function(){
+    var deleteCode = prompt();
+    if(deleteCode){
+      $.ajax({
+        type: 'POST',
+        url: '<%= product_path(@product) %>',
+        data: '_method=delete&code=' + deleteCode,
+        success: function(data){
+          if(data.result){
+            alert("Delete Complete.");
+            location.href = '<%= products_path %>';
+          }else{
+            alert('No match Delete code.');
+          }
         }
-    });
+      });
+    }else{
+
+    }
+  });
 });
 
 var viewer3d;
 
 function getOptions(){
-    var mc = document.getElementById("color_model").value;
-    var bc1 = document.getElementById("color_back1").value;
-    var bc2 = document.getElementById("color_back2").value;
-    var ren = 'Flat';
-    var def = document.getElementById("model_quality").value;
-    return {ModelColor: mc,
-            BackgroundColor1: bc1,
-            BackgroundColor2: bc2,
-            RenderMode: ren,
-            Definition: def};
+  var mc = document.getElementById("color_model").value;
+  var bc1 = document.getElementById("color_back1").value;
+  var bc2 = document.getElementById("color_back2").value;
+  var ren = 'Flat';
+  var def = document.getElementById("model_quality").value;
+  return {
+    ModelColor: mc,
+    BackgroundColor1: bc1,
+    BackgroundColor2: bc2,
+    RenderMode: ren,
+    Definition: def
+  };
 }
 
 function readSTLfile(opt){
-    var canvas = document.getElementById('cv');
-    viewer3d = new JSC3D.Viewer(canvas);
-    viewer3d.setParameter('SceneUrl', opt.SceneUrl);
-    viewer3d.setParameter('InitRotationX', -80);
-    viewer3d.setParameter('InitRotationY', 0);
-    viewer3d.setParameter('InitRotationZ', 0);
-    viewer3d.setParameter('ModelColor', opt.ModelColor);
-    viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
-    viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
-    viewer3d.setParameter('RenderMode', opt.RenderMode);
-    viewer3d.setParameter('Definition', opt.Definition);
-    viewer3d.init();
-    viewer3d.update();
+  var canvas = document.getElementById('cv');
+  viewer3d = new JSC3D.Viewer(canvas);
+  viewer3d.setParameter('SceneUrl', opt.SceneUrl);
+  viewer3d.setParameter('InitRotationX', -80);
+  viewer3d.setParameter('InitRotationY', 0);
+  viewer3d.setParameter('InitRotationZ', 0);
+  viewer3d.setParameter('ModelColor', opt.ModelColor);
+  viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
+  viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
+  viewer3d.setParameter('RenderMode', opt.RenderMode);
+  viewer3d.setParameter('Definition', opt.Definition);
+  viewer3d.init();
+  viewer3d.update();
 }
 
 function changeOption(strOpt, strValue){
-    console.log("change " + strOpt + " to " + strValue);
-    viewer3d.setParameter(strOpt, strValue);
-    viewer3d.init();
-    viewer3d.update();
+  viewer3d.setParameter(strOpt, strValue);
+  viewer3d.init();
+  viewer3d.update();
 }
 
 function openByGet(){
-    var url = '/stlFiles/<%= @product.id %>.stl';
-    var opt = getOptions();
-    opt.SceneUrl = url;
-    readSTLfile(opt);
+  var url = '/stlFiles/<%= @product.id %>.stl';
+  var opt = getOptions();
+  opt.SceneUrl = url;
+  readSTLfile(opt);
 }
 </script>
