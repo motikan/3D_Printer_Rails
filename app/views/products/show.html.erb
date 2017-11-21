@@ -1,48 +1,65 @@
 <div class="row row-eq-height">
-    <div class="col-md-7 col-md-offset-1" style="background-color:#d4d4d4;">
+  <div class="col-md-7 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body text-center">
         <canvas id="cv" width="620" height="600" ></canvas>
-        <div id="tip" style="display:block; padding:2px; position:absolute; left:20px; bottom:40px; background-color:#ffffff; height:45px; opacity:1;"> 
-        Drag mouse to rotate <br> Drag mouse with [Shift pressed] to zoom
-        </div>
-        <p>This web application do not support the InternetExplorer.</p>
+      </div>
+      <div class="panel-footer"></div>
     </div>
-    <div class="col-md-3" style="background-color:#f4f4f4;">
-        <div class="row">
-            <center><h4><%= @product.title %></h4></center>
-            <center><%= image_tag @product.image.to_s, :width => "100%" %></center>
-        </div>
+  </div>
+  <div class="col-md-3">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+          <div class="row text-center">
+            <h4><%= @product.title %></h4>
+            <%= image_tag @product.image.to_s, :class => "img-thumbnail", :width => "100%" %>
+          </div>
 
-        <div class="row">
-            <center><%= link_to "Download", "/stlFiles/" + (@product.id.to_s) + ".stl", class: "btn btn-info btn-large", style: "width:230px;", download: @product.id.to_s + ".stl" %></center>
-        </div>
+          <div class="row text-center">
+            <%= link_to "Download", "/stlFiles/" + (@product.id.to_s) + ".stl",
+                        class: "btn btn-info btn-large",style: "width:230px;", download: @product.id.to_s + ".stl" %>
+          </div>
 
-        <div class="row">
+          <div class="row">
             <div class="col-md-6">
-                <%= label_tag 'Model' %>
-                <%= color_field "color", "model", :value => "#00ff00", :class => "form-control" %>
+              <%= label_tag 'Model' %>
+              <%= color_field "color", "model", :value => "#00ff00", :class => "form-control" %>
             </div>
             <div class="col-md-6">
-                <%= label_tag 'Quality' %>
-                <%= select :model, :quality, [["High", "high"], ["Medium", "medium"], ["Low", "low"]],
-                    {:selected => "medium"}, {:class => "form-control"} %>
+              <%= label_tag 'Quality' %>
+              <%= select :model, :quality, [["High", "high"], ["Medium", "medium"], ["Low", "low"]],
+                         {:selected => "medium"}, {:class => "form-control"} %>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag 'Back Top' %>
+              <%= color_field "color", "back1", :value => "#ffffff", :class => "form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= label_tag 'Back Bottom' %>
+              <%= color_field "color", "back2", :value => "#515151", :class => "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-md-offset-8">
+              <%= button_tag "Delete", {:id => "delete", :class => "btn btn-danger"} %>
+            </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <%= label_tag 'Back Top' %>
-                <%= color_field "color", "back1", :value => "#ffffff", :class => "form-control" %>
-            </div>
-            <div class="col-md-6">
-                <%= label_tag 'Back Bottom' %>
-                <%= color_field "color", "back2", :value => "#515151", :class => "form-control" %>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-8">
-                <%= button_tag "Delete", {:id => "delete", :class => "btn btn-danger"} %>
-            </div>
-        </div>
+        <div class="panel-footer"></div>
+      </div>
     </div>
+    <div class="row">
+      <div class="well well-sm">
+        Drag mouse to rotate <br/> Drag mouse with [Shift pressed] to zoom
+        <h4><small># This web application do not support the InternetExplorer</small></h4>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
 $(function(){
