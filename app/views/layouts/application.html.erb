@@ -3,6 +3,7 @@
 <head>
   <title>OnceTech</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,13 +14,13 @@
   </div>
 </nav>
 <div class="jumbotron">
-  <div class="container-fluid"> 
+  <div class="container">
       <div style="height:10px;"></div>
       <%= yield %>
   </div>
 </div>
-<footer class="footer">
-    <center><p class="text-muted"><a href="https://twitter.com/motikan2010" target="_blank">@motikan2010</a> 2013 - </p></center>
+<footer class="footer text-center">
+  <p class="text-muted"><a href="https://twitter.com/motikan2010" target="_blank">@motikan2010</a> 2013 - </p>
 </footer>
 </body>
 </html>

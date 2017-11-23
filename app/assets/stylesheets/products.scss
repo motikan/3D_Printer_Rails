@@ -26,13 +26,13 @@
 }
 
 .product_div{
-  background-color: rgba(126, 126, 126, 0.5);
+  background-color: rgba(200, 200, 200, 0.5);
   padding: 10px;
   border-radius: 10px;            /* CSS3 */
   -webkit-border-radius: 10px;    /* Safari, Google Chrome */
   -moz-border-radius: 10px;       /* Firefox */
 }
-git
+
 .product_image_div{
   text-align: center;
   height:100px;
@@ -51,7 +51,12 @@ git
   display: flex;
   flex-wrap: wrap;
 }
+/* index */
+.top-block-head {
+  padding-left: 30px;
+}
 
+/* new */
 #image-preview {
   background-image: url('/assets/noimage.png');
   width: 100%;
@@ -61,4 +66,17 @@ git
   background-size: contain;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
   display: inline-block;
+}
+
+/* show */
+#model-viewer {
+  margin: auto auto;
+}
+
+#model-operator {
+  margin: auto auto;
+}
+
+#viewer-tip {
+  margin: auto auto;
 }

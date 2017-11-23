@@ -1,67 +1,57 @@
-<div class="col-md-10 col-md-offset-1" style="background-color: #CCCCCC">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        </div>
-        <div class="panel-body">
-          <img class="img-thumbnail" width="100%" src="/assets/top.png">
-          <%= link_to 'Go to Create', new_product_path, :id => "create-btn", :class => 'btn btn-lg btn-success col-md-10 col-md-offset-1'%>
-        </div>
-        <div class="panel-footer"></div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <img class="img-thumbnail" width="100%" src="/assets/top.png">
+      <%= link_to 'Go to Create', new_product_path, :id => "create-btn", :class => 'btn btn-lg btn-success col-md-10 col-md-offset-1'%>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading top-block-head">
+        <h2><span class="glyphicon glyphicon-film" aria-hidden="true"></span> DEMO MOVIE</h2>
+      </div>
+      <div class="panel-body">
+        <iframe src="//player.vimeo.com/video/86807850" width="100%" height="422" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>- DEMO MOVIE -</h3>
-        </div>
-        <div class="panel-body">
-          <iframe src="//player.vimeo.com/video/86807850"
-                  width="100%" height="422" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="panel-footer"></div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading top-block-head">
+        <h3><span class="glyphicon glyphicon-star" aria-hidden="true"></span> RECENT MODELS</h3>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>- Recent Models -</h3>
+      <div class="panel-body">
+        <div class="paging">
+          <%= paginate(@products) %>
         </div>
-        <div class="panel-body">
-          <div class="paging">
-            <%= paginate(@products) %>
-          </div>
-          <% @products.each_with_index do |product, i| %>
-              <% if i % 2 == 0 %>
-                  <div class="row row-eq-height">
-              <% end %>
-              <div class="col-md-6">
-                <div class="product_div">
-                  <div class="product_image_div">
-                    <%= image_tag product.image.url, :class => "product_image" %>
-                  </div>
-                  <div class="product_title_div">
-                    <h2><%= product.title %></h2>
-                    <%= link_to 'Show', product, :class => 'btn btn-primary' %>
-                  </div>
+        <% @products.each_with_index do |product, i| %>
+            <% if i % 2 == 0 %>
+                <div class="row row-eq-height">
+            <% end %>
+            <div class="col-md-6">
+              <div class="product_div">
+                <div class="product_image_div">
+                  <%= image_tag product.image.url, :class => "product_image" %>
+                </div>
+                <div class="product_title_div">
+                  <h2><%= product.title %></h2>
+                  <%= link_to 'Show', product, :class => 'btn btn-primary' %>
                 </div>
               </div>
-              <% if i%2 == 1 || i + 1 ==  @products.length %>
-                  </div>
-              <% end %>
-          <% end %>
-          <div class="paging">
-            <%= paginate(@products) %>
-          </div>
+            </div>
+            <% if i % 2 == 1 || i + 1 ==  @products.length %>
+                </div>
+            <% end %>
+        <% end %>
+        <div class="paging">
+          <%= paginate(@products) %>
         </div>
-        <div class="panel-footer"></div>
       </div>
     </div>
   </div>

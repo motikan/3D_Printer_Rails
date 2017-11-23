@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'therubyracer'
 gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
+
+# Bootstrap
 gem 'twitter-bootstrap-rails'
 
 gem 'carrierwave', '~> 1.0'
