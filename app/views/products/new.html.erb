@@ -1,11 +1,9 @@
-<div class="col-md-10 col-md-offset-1" style="background-color: #CCCCCC">
+<div class="col-md-10 col-md-offset-1">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        </div>
-        <div class="panel-body">
-          <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+    <div class="panel-heading"></div>
+      <div class="panel-body">
+        <div class="col-md-8 col-md-offset-2">
           <%= form_for @product, :html => { :class => "form-horizontal" ,:multipart => true } do |f| %>
               <div class="row">
                 <div class="col-md-12">
@@ -21,45 +19,43 @@
                   <% end %>
                 </div>
               </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                  <%= f.label :title %>
-                  <%= f.text_field :title, :class => 'form-control' %>
-                  </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                <%= f.label :title %>
+                <%= f.text_field :title, :class => 'form-control' %>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= f.label 'Base Model' %>
-                    <%= select_tag 'model[type]', options_for_select({"Mini Cup" => "0", "Mini Pot" => "1"}), :class => 'form-control' %>
-                  </div>
-                  <div class="col-md-6">
-                    <%= f.label "Delete Code" %>
-                    <%= f.text_field :deletekey, placeholder: 'Use to Delete.', :class => 'form-control' %>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.label 'Base Model' %>
+                  <%= select_tag 'model[type]', options_for_select({"Mini Cup" => "0", "Mini Pot" => "1"}), :class => 'form-control' %>
                 </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <label class="input-group-btn">
-                      <span class="btn btn-primary">
-                        Select Image File <%= file_field_tag 'product[image]', :style => "display:none" %>
-                      </span>
-                    </label>
-                  </div>
-                  <div class="col-md-9">
-                    <input id="file-name" type="text" class="form-control" disabled />
-                  </div>
+                <div class="col-md-6">
+                  <%= f.label "Delete Code" %>
+                  <%= f.text_field :deletekey, placeholder: 'Use to Delete.', :class => 'form-control' %>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= submit_tag "Create", {id: "submit_button", :class => "btn btn-success btn-lg"} %>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                      Select Image File <%= file_field_tag 'product[image]', :style => "display:none" %>
+                    </span>
+                  </label>
                 </div>
+                <div class="col-md-9">
+                  <input id="file-name" type="text" class="form-control" disabled />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <%= submit_tag "Create", {id: "submit_button", :class => "btn btn-success btn-lg"} %>
+                </div>
+              </div>
           <% end %>
-          </div>
         </div>
-        <div class="panel-footer"></div>
       </div>
-    </div>
+      <div class="panel-footer"></div>
     </div>
   </div>
 </div>

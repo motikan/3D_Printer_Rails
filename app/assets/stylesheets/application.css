@@ -13,15 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-#model-viewer {
-  margin: auto auto;
-}
-
-#model-operator {
-  margin: auto auto;
-}
-
-#viewer-tip {
-  margin: auto auto;
-}
