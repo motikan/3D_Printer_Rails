@@ -58,7 +58,7 @@
 
 /* new */
 #image-preview {
-  background-image: url('/assets/noimage.png');
+  background-image: image-url("noimage.png");
   width: 100%;
   padding-top: 33%;
   background-position: center;
