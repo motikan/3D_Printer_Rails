@@ -24,7 +24,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'rmagick'
 gem 'chunky_png'
 gem 'unicorn'
-gem 'kaminari'
+gem 'kaminari', '>= 1.2.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
