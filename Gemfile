@@ -20,7 +20,7 @@ gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
 # Bootstrap
 gem 'twitter-bootstrap-rails'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3', '>= 1.3.2'
 gem 'rmagick'
 gem 'chunky_png'
 gem 'unicorn'
